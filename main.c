@@ -55,7 +55,7 @@ int main(int argc, char **argv){
 	if(argc == 2) threadCount = strtol(argv[1], &endptr, 10);
 	else threadCount = 1;
 
-	if(!isSquareNumber(threadCount) || evenlyDivides(threadCount, n)){
+	if(!isSquareNumber(threadCount) || !evenlyDivides(threadCount, n)){
 		printf("According to the assignment description, you must pass a square number of threads\n
 			And/or the number of threads must evenly divide into n^2.\n");
 		return -1;	
