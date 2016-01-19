@@ -21,6 +21,7 @@ typedef struct thread_args {
 
 /*Function declaration*/
 static bool isSquareNumber(long int number);
+static bool evenlyDivides(long int number, int n);
 
 /*The actual function called and run by created threads.
  * at this point, calculates the matrix multiplication for single point.*/
@@ -54,8 +55,9 @@ int main(int argc, char **argv){
 	if(argc == 2) threadCount = strtol(argv[1], &endptr, 10);
 	else threadCount = 1;
 
-	if(!isSquareNumber(threadCount)){
-		printf("According to the assignment description, you must pass a square number of threads.\n");
+	if(!isSquareNumber(threadCount) || evenlyDivides(threadCount, n)){
+		printf("According to the assignment description, you must pass a square number of threads\n
+			And/or the number of threads must evenly divide into n^2.\n");
 		return -1;	
 	}
 
@@ -148,4 +150,15 @@ bool isSquareNumber(long int number){
 	}
 
 	return false;
+}
+
+bool evenlyDivides(long int number, int n){
+		if(!(n*n % number)){
+			return true;	
+		}
+		
+		return false;
+		}
+}
+
 }
